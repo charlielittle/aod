@@ -53,29 +53,30 @@ async function insertMany( result, aod ) {
 	var datascopeId = result.requestInstance.datascopeId;
 	// need to remove _id if it is there
 	delete result._id;
-	for( let scopeIdx = 697; scopeIdx < 1000; scopeIdx++ ) {
+	for( let i = 0; i < 1000000; i++ ) {
+		let scopeIdx = Math.floor(i / 1000);
 		let scopePad = scopeIdx.toString().padStart( 5, "0" );
-		for( let i = 1; i < 1001; i++ ) {
-			let padded = i.toString().padStart(9,"0");
-			result.requestInstance.id = id.concat( "-", padded );
-			result.requestInstance.datascopeId = datascopeId.concat( "-", scopePad );
-			// console.log(result.requestInstance.id, result.requestInstance.datascopeId);
-			batch.push( JSON.parse( JSON.stringify(result) ) );
-		}
-		// insert batch async
-		console.log( `Batch length: ${batch.length}` );
-		while( count > 5 ) {
-			console.log( `waiting on tasks before adding another: count=${count}` );
-			await new Promise( r => setTimeout( r,  2 * 1000 ));
-		}
-		count++;
-		const db = aod.insertMany( batch, { "ordered":false } ).then( (dbResult) => { 
-			console.log( dbResult) ;  
-			count--; 
-			console.log( (result._id||"no _id" )); 
-		} );
-		batch = [];
+		let padded = i.toString().padStart(9,"0");
+		result.requestInstance.id = id.concat( "-", padded );
+		result.requestInstance.datascopeId = datascopeId.concat( "-", scopePad );
+		if( i % 1013 == 0 )
+			console.log(result.requestInstance.id, result.requestInstance.datascopeId);
+		// batch.push( JSON.parse( JSON.stringify(result) ) );
 	}
+	if( batch.length == 0 ) return;
+	// insert batch async
+	console.log( `Batch length: ${batch.length}` );
+	while( count > 5 ) {
+		console.log( `waiting on tasks before adding another: count=${count}` );
+		await new Promise( r => setTimeout( r,  2 * 1000 ));
+	}
+	count++;
+	const db = aod.insertMany( batch, { "ordered":false } ).then( (dbResult) => { 
+		console.log( dbResult) ;  
+		count--; 
+		console.log( (result._id||"no _id" )); 
+	} );
+	batch = [];
 }
 
     // const result = await theaters.bulkWrite([
