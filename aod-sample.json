@@ -1,0 +1,906 @@
+{
+  "requestInstance": {
+    "id": "92BECF87DD7649BB934FD6D44E07D8F4",
+    "portfolioId": "5B280467F7474386B5B2A32430D38E05",
+    "portfolioItemId": "611E04462F3846AABB2E0F593678462C",
+    "engineInstanceId": "611246B512B846328125FF7E0F233CC5",
+    "reportType": "BuilderAccessPoint",
+    "categoryId": "aodr1qnacrbnpi",
+    "clientId": "5085",
+    "datascopeId": "19F5AE1EE45C4AA4979195910884C614",
+    "datascopeNativeName": "NAC Red Bull",
+    "datascopeName": "Not Applicable",
+    "selectionsMissing": false,
+    "coreData": {
+      "guid": "92BECF87DD7649BB934FD6D44E07D8F4",
+      "title": "App Office Published",
+      "internalTitle": "Scan Market App for Office",
+      "nativeName": "RB01",
+      "runType": "ANALYSIS",
+      "friendlyUrl": "https://answersqc.nielsen.com/portal/site/answers/menuitem.53d87ac7dd7ce0eaa344b4a7619290a0/"
+    },
+    "prompts": [
+      {
+        "promptId": "Markets_QF",
+        "basePromptId": "Markets_QF",
+        "promptName": "Markets",
+        "dimension": "MRKT",
+        "dimType": "MRKT",
+        "minSelections": 1,
+        "maxSelections": 0,
+        "coachLine": "Select one to many Markets",
+        "promptType": "BASE",
+        "type": "tree",
+        "hidden": false,
+        "editLayoutDisplay": false,
+        "usedInLayout": true,
+        "logical": false,
+        "filteredFunctions": [
+          {
+            "title": "ALL"
+          },
+          {
+            "title": "GROUP BY"
+          },
+          {
+            "title": "SUM"
+          }
+        ],
+        "lowLevelChar": {
+          "id": "MKT_DISP_NAME",
+          "type": "CHARACTERISTIC",
+          "desc": "Market Display Name",
+          "upcCount": 0,
+          "thruIndex": 0
+        },
+        "dimTypeDescription": "Markets",
+        "customPromptType": "BASE",
+        "hiddenFromBI": false
+      },
+      {
+        "promptId": "Products_QF",
+        "basePromptId": "Products_QF",
+        "promptName": "Products",
+        "dimension": "PRDC",
+        "dimType": "PRDC",
+        "minSelections": 1,
+        "maxSelections": 0,
+        "coachLine": "Select one to many Products",
+        "promptType": "BASE",
+        "type": "tree",
+        "hidden": false,
+        "editLayoutDisplay": false,
+        "usedInLayout": true,
+        "logical": false,
+        "filteredFunctions": [
+          {
+            "title": "ALL"
+          },
+          {
+            "title": "GROUP BY"
+          },
+          {
+            "title": "SUM"
+          }
+        ],
+        "subPrompts": [],
+        "lowLevelChar": {
+          "id": "SCAN_CORE_PRDC_DSC_SHORT",
+          "type": "CHARACTERISTIC",
+          "desc": "SHORT PRODUCT DESCRIPTION",
+          "upcCount": 0,
+          "thruIndex": 0
+        },
+        "dimTypeDescription": "Products",
+        "customPromptType": "BASE",
+        "hiddenFromBI": false
+      },
+      {
+        "promptId": "Product Share_QF",
+        "basePromptId": "Product Share_QF",
+        "promptName": "Product Share Basis",
+        "dimension": "PRDC_SHR",
+        "dimType": "PRDC",
+        "minSelections": 1,
+        "maxSelections": 1,
+        "coachLine": "Select one product share basis",
+        "promptType": "BASE",
+        "type": "tree",
+        "hidden": false,
+        "editLayoutDisplay": true,
+        "usedInLayout": true,
+        "logical": false,
+        "filteredFunctions": [
+          {
+            "title": "ALL"
+          },
+          {
+            "title": "SUM"
+          }
+        ],
+        "subPrompts": [],
+        "lowLevelChar": {
+          "id": "SCAN_CORE_PRDC_DSC_SHORT",
+          "type": "CHARACTERISTIC",
+          "desc": "SHORT PRODUCT DESCRIPTION",
+          "upcCount": 0,
+          "thruIndex": 0
+        },
+        "dimTypeDescription": "Products",
+        "customPromptType": "BASE",
+        "hiddenFromBI": false
+      },
+      {
+        "promptId": "Fact_QF",
+        "basePromptId": "Fact_QF",
+        "promptName": "Facts",
+        "dimension": "FCT",
+        "dimType": "FCT",
+        "minSelections": 1,
+        "maxSelections": 0,
+        "coachLine": "Select one to many Store Facts",
+        "promptType": "BASE",
+        "type": "tree",
+        "hidden": false,
+        "editLayoutDisplay": false,
+        "usedInLayout": true,
+        "logical": false,
+        "filteredFunctions": [],
+        "dimTypeDescription": "Facts",
+        "customPromptType": "BASE",
+        "hiddenFromBI": false
+      },
+      {
+        "promptId": "Periods_QF",
+        "basePromptId": "Periods_QF",
+        "promptName": "Periods",
+        "dimension": "PRD",
+        "dimType": "PRD",
+        "minSelections": 1,
+        "maxSelections": 0,
+        "coachLine": "Select one to many Periods",
+        "promptType": "BASE",
+        "type": "tree",
+        "hidden": false,
+        "editLayoutDisplay": false,
+        "usedInLayout": true,
+        "logical": false,
+        "filteredFunctions": [
+          {
+            "title": "ALL"
+          },
+          {
+            "title": "GROUP BY"
+          },
+          {
+            "title": "SUM"
+          }
+        ],
+        "lowLevelChar": {
+          "id": "WEEK_IN_MONTH_DSC",
+          "type": "CHARACTERISTIC",
+          "desc": "Week in Month Description",
+          "upcCount": 0,
+          "thruIndex": 0
+        },
+        "dimTypeDescription": "Periods",
+        "customPromptType": "BASE",
+        "hiddenFromBI": false
+      }
+    ],
+    "dataSet": [
+      {
+        "promptId": "Markets_QF",
+        "basePromptId": "Markets_QF",
+        "promptName": "Markets",
+        "virtualDim": false,
+        "hiddenPrompt": false,
+        "logicalDimId": "MRKT",
+        "minSelections": 1,
+        "maxSelections": 0,
+        "valid": true,
+        "dataScopeId": "19F5AE1EE45C4AA4979195910884C614",
+        "selections": [
+          {
+            "id": "e6514891bc7b4f0783019f2e5392280a",
+            "active": true,
+            "items": [
+              {
+                "nodeId": "GRP",
+                "type": "VIEW",
+                "desc": "Groups (folders)",
+                "valid": true,
+                "status": "",
+                "promptId": "Markets_QF",
+                "baseUuid": "GRP|VIEW|Markets_QF|e6514891bc7b4f0783019f2e5392280a",
+                "upcCount": 0,
+                "thruIndex": 0,
+                "pathInfo": [],
+                "pathInfoIds": [],
+                "pathInfoTypes": [],
+                "children": [
+                  {
+                    "nodeId": "Groups",
+                    "type": "GROUP",
+                    "desc": "Market Groups",
+                    "dynLabel": false,
+                    "valid": true,
+                    "status": "",
+                    "promptId": "Markets_QF",
+                    "showTotalsOnly": false,
+                    "baseUuid": "Groups|GROUP|Markets_QF|e6514891bc7b4f0783019f2e5392280a",
+                    "upcCount": 0,
+                    "thruIndex": 0,
+                    "pathInfo": [
+                      "Groups (folders)"
+                    ],
+                    "pathInfoIds": [
+                      "GRP"
+                    ],
+                    "pathInfoTypes": [
+                      "VIEW"
+                    ],
+                    "children": [
+                      {
+                        "nodeId": "7798",
+                        "type": "GROUP_LEVEL",
+                        "desc": "Drug Retailers",
+                        "dynLabel": false,
+                        "valid": true,
+                        "status": "",
+                        "promptId": "Markets_QF",
+                        "showTotalsOnly": false,
+                        "baseUuid": "7798|GROUP_LEVEL|Markets_QF|e6514891bc7b4f0783019f2e5392280a",
+                        "upcCount": 0,
+                        "thruIndex": 0,
+                        "pathInfo": [
+                          "Groups (folders)",
+                          "Market Groups"
+                        ],
+                        "pathInfoIds": [
+                          "GRP",
+                          "Groups"
+                        ],
+                        "pathInfoTypes": [
+                          "VIEW",
+                          "GROUP"
+                        ],
+                        "children": [
+                          {
+                            "nodeId": "4378040",
+                            "type": "GROUP_LEVEL_ITEM",
+                            "desc": "Atlanta Drug",
+                            "leaf": true,
+                            "dynLabel": false,
+                            "valid": true,
+                            "status": "",
+                            "promptId": "Markets_QF",
+                            "showTotalsOnly": false,
+                            "baseUuid": "7798|GROUP_LEVEL|Markets_QF|e6514891bc7b4f0783019f2e5392280a|4378040",
+                            "upcCount": 0,
+                            "thruIndex": 0,
+                            "pathInfo": [
+                              "Groups (folders)",
+                              "Market Groups",
+                              "Drug Retailers"
+                            ],
+                            "pathInfoIds": [
+                              "GRP",
+                              "Groups",
+                              "7798"
+                            ],
+                            "pathInfoTypes": [
+                              "VIEW",
+                              "GROUP",
+                              "GROUP_LEVEL"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "promptId": "Products_QF",
+        "basePromptId": "Products_QF",
+        "promptName": "Products",
+        "virtualDim": false,
+        "hiddenPrompt": false,
+        "logicalDimId": "PRDC",
+        "minSelections": 1,
+        "maxSelections": 0,
+        "valid": true,
+        "dataScopeId": "19F5AE1EE45C4AA4979195910884C614",
+        "selections": [
+          {
+            "id": "e142677e57974dc0889714961177d1dc",
+            "active": true,
+            "items": [
+              {
+                "nodeId": "HRCH",
+                "type": "VIEW",
+                "desc": "Hierarchies",
+                "valid": true,
+                "status": "",
+                "promptId": "Products_QF",
+                "baseUuid": "HRCH|VIEW|Products_QF|e142677e57974dc0889714961177d1dc",
+                "upcCount": 0,
+                "thruIndex": 0,
+                "pathInfo": [],
+                "pathInfoIds": [],
+                "pathInfoTypes": [],
+                "children": [
+                  {
+                    "nodeId": "2607",
+                    "type": "HIERARCHY",
+                    "desc": "Bohi/Dept/Cat/Sbct/Seg/Sbseg/Brd/Sz",
+                    "dynLabel": false,
+                    "valid": true,
+                    "status": "",
+                    "promptId": "Products_QF",
+                    "showTotalsOnly": false,
+                    "baseUuid": "2607|HIERARCHY|Products|e142677e57974dc0889714961177d1dc",
+                    "upcCount": 0,
+                    "thruIndex": 0,
+                    "pathInfo": [
+                      "Hierarchies"
+                    ],
+                    "pathInfoIds": [
+                      "HRCH"
+                    ],
+                    "pathInfoTypes": [
+                      "VIEW"
+                    ],
+                    "children": [
+                      {
+                        "nodeId": "2429",
+                        "type": "HIERARCHY_LEVEL",
+                        "desc": "Brand Owner High",
+                        "valid": true,
+                        "status": "",
+                        "promptId": "Products_QF",
+                        "baseUuid": "2429|HIERARCHY_LEVEL|Products_QF|e142677e57974dc0889714961177d1dc",
+                        "upcCount": 0,
+                        "thruIndex": 0,
+                        "pathInfo": [
+                          "Hierarchies",
+                          "Bohi/Dept/Cat/Sbct/Seg/Sbseg/Brd/Sz"
+                        ],
+                        "pathInfoIds": [
+                          "HRCH",
+                          "2607"
+                        ],
+                        "pathInfoTypes": [
+                          "VIEW",
+                          "HIERARCHY"
+                        ],
+                        "children": [
+                          {
+                            "nodeId": "2430",
+                            "type": "HIERARCHY_LEVEL",
+                            "desc": "Department",
+                            "dynLabel": false,
+                            "valid": true,
+                            "status": "",
+                            "promptId": "Products_QF",
+                            "showTotalsOnly": false,
+                            "baseUuid": "2430|HIERARCHY_LEVEL|Products|e142677e57974dc0889714961177d1dc",
+                            "upcCount": 0,
+                            "thruIndex": 0,
+                            "pathInfo": [
+                              "Hierarchies",
+                              "Bohi/Dept/Cat/Sbct/Seg/Sbseg/Brd/Sz",
+                              "Brand Owner High"
+                            ],
+                            "pathInfoIds": [
+                              "HRCH",
+                              "2607",
+                              "2429"
+                            ],
+                            "pathInfoTypes": [
+                              "VIEW",
+                              "HIERARCHY",
+                              "HIERARCHY_LEVEL"
+                            ],
+                            "children": [
+                              {
+                                "nodeId": "DAIRY",
+                                "type": "CHARACTERISTIC_VALUE",
+                                "desc": "DAIRY",
+                                "leaf": true,
+                                "dynLabel": false,
+                                "valid": true,
+                                "status": "",
+                                "promptId": "Products_QF",
+                                "showTotalsOnly": false,
+                                "baseUuid": "2430|HIERARCHY_LEVEL|Products|e142677e57974dc0889714961177d1dc|DAIRY",
+                                "upcCount": 0,
+                                "thruIndex": 0,
+                                "pathInfo": [
+                                  "Hierarchies",
+                                  "Bohi/Dept/Cat/Sbct/Seg/Sbseg/Brd/Sz",
+                                  "Brand Owner High",
+                                  "Department"
+                                ],
+                                "pathInfoIds": [
+                                  "HRCH",
+                                  "2607",
+                                  "2429",
+                                  "2430"
+                                ],
+                                "pathInfoTypes": [
+                                  "VIEW",
+                                  "HIERARCHY",
+                                  "HIERARCHY_LEVEL",
+                                  "HIERARCHY_LEVEL"
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "promptId": "Product Share_QF",
+        "basePromptId": "Product Share_QF",
+        "promptName": "Product Share Basis",
+        "virtualDim": true,
+        "hiddenPrompt": false,
+        "logicalDimId": "PRDC_SHR",
+        "minSelections": 1,
+        "maxSelections": 1,
+        "valid": true,
+        "dataScopeId": "19F5AE1EE45C4AA4979195910884C614",
+        "selections": [
+          {
+            "id": "e7d10c34ce8c4606a3512c4d782f2369",
+            "active": true,
+            "items": [
+              {
+                "nodeId": "HRCH",
+                "type": "VIEW",
+                "desc": "Hierarchies",
+                "valid": true,
+                "status": "",
+                "promptId": "Product Share_QF",
+                "baseUuid": "HRCH|VIEW|Product Share_QF|e7d10c34ce8c4606a3512c4d782f2369",
+                "upcCount": 0,
+                "thruIndex": 0,
+                "pathInfo": [],
+                "pathInfoIds": [],
+                "pathInfoTypes": [],
+                "children": [
+                  {
+                    "nodeId": "2607",
+                    "type": "HIERARCHY",
+                    "desc": "Bohi/Dept/Cat/Sbct/Seg/Sbseg/Brd/Sz",
+                    "dynLabel": false,
+                    "valid": true,
+                    "status": "",
+                    "promptId": "Product Share_QF",
+                    "showTotalsOnly": false,
+                    "baseUuid": "2607|HIERARCHY|Product Share_QF|e7d10c34ce8c4606a3512c4d782f2369",
+                    "upcCount": 0,
+                    "thruIndex": 0,
+                    "pathInfo": [
+                      "Hierarchies"
+                    ],
+                    "pathInfoIds": [
+                      "HRCH"
+                    ],
+                    "pathInfoTypes": [
+                      "VIEW"
+                    ],
+                    "children": [
+                      {
+                        "nodeId": "2429",
+                        "type": "HIERARCHY_LEVEL",
+                        "desc": "Brand Owner High",
+                        "valid": true,
+                        "status": "",
+                        "promptId": "Product Share_QF",
+                        "baseUuid": "2429|HIERARCHY_LEVEL|Product Share_QF|e7d10c34ce8c4606a3512c4d782f2369",
+                        "upcCount": 0,
+                        "thruIndex": 0,
+                        "pathInfo": [
+                          "Hierarchies",
+                          "Bohi/Dept/Cat/Sbct/Seg/Sbseg/Brd/Sz"
+                        ],
+                        "pathInfoIds": [
+                          "HRCH",
+                          "2607"
+                        ],
+                        "pathInfoTypes": [
+                          "VIEW",
+                          "HIERARCHY"
+                        ],
+                        "children": [
+                          {
+                            "nodeId": "2430",
+                            "type": "HIERARCHY_LEVEL",
+                            "desc": "Department",
+                            "dynLabel": false,
+                            "valid": true,
+                            "status": "",
+                            "promptId": "Product Share_QF",
+                            "showTotalsOnly": false,
+                            "baseUuid": "2430|HIERARCHY_LEVEL|Product Share_QF|e7d10c34ce8c4606a3512c4d782f2369",
+                            "upcCount": 0,
+                            "thruIndex": 0,
+                            "pathInfo": [
+                              "Hierarchies",
+                              "Bohi/Dept/Cat/Sbct/Seg/Sbseg/Brd/Sz",
+                              "Brand Owner High"
+                            ],
+                            "pathInfoIds": [
+                              "HRCH",
+                              "2607",
+                              "2429"
+                            ],
+                            "pathInfoTypes": [
+                              "VIEW",
+                              "HIERARCHY",
+                              "HIERARCHY_LEVEL"
+                            ],
+                            "children": [
+                              {
+                                "nodeId": "DAIRY",
+                                "type": "CHARACTERISTIC_VALUE",
+                                "desc": "DAIRY",
+                                "leaf": true,
+                                "dynLabel": false,
+                                "valid": true,
+                                "status": "",
+                                "promptId": "Product Share_QF",
+                                "showTotalsOnly": false,
+                                "baseUuid": "2430|HIERARCHY_LEVEL|Product Share_QF|e7d10c34ce8c4606a3512c4d782f2369|DAIRY",
+                                "upcCount": 0,
+                                "thruIndex": 0,
+                                "pathInfo": [
+                                  "Hierarchies",
+                                  "Bohi/Dept/Cat/Sbct/Seg/Sbseg/Brd/Sz",
+                                  "Brand Owner High",
+                                  "Department"
+                                ],
+                                "pathInfoIds": [
+                                  "HRCH",
+                                  "2607",
+                                  "2429",
+                                  "2430"
+                                ],
+                                "pathInfoTypes": [
+                                  "VIEW",
+                                  "HIERARCHY",
+                                  "HIERARCHY_LEVEL",
+                                  "HIERARCHY_LEVEL"
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "promptId": "Fact_QF",
+        "basePromptId": "Fact_QF",
+        "promptName": "Facts",
+        "virtualDim": false,
+        "hiddenPrompt": false,
+        "logicalDimId": "FCT",
+        "minSelections": 1,
+        "maxSelections": 0,
+        "valid": true,
+        "dataScopeId": "19F5AE1EE45C4AA4979195910884C614",
+        "selections": [
+          {
+            "id": "e80e03681bf945a8ad2f88b0f547bfb7",
+            "active": true,
+            "items": [
+              {
+                "nodeId": "GRP",
+                "type": "VIEW",
+                "desc": "Groups (folders)",
+                "valid": true,
+                "status": "",
+                "promptId": "Fact_QF",
+                "baseUuid": "GRP|VIEW|Fact_QF|e80e03681bf945a8ad2f88b0f547bfb7",
+                "upcCount": 0,
+                "thruIndex": 0,
+                "pathInfo": [],
+                "pathInfoIds": [],
+                "pathInfoTypes": [],
+                "children": [
+                  {
+                    "nodeId": "Groups",
+                    "type": "GROUP",
+                    "desc": "Fact Groups",
+                    "dynLabel": false,
+                    "valid": true,
+                    "status": "",
+                    "promptId": "Fact_QF",
+                    "showTotalsOnly": false,
+                    "baseUuid": "Groups|GROUP|Fact_QF|e80e03681bf945a8ad2f88b0f547bfb7",
+                    "upcCount": 0,
+                    "thruIndex": 0,
+                    "pathInfo": [
+                      "Groups (folders)"
+                    ],
+                    "pathInfoIds": [
+                      "GRP"
+                    ],
+                    "pathInfoTypes": [
+                      "VIEW"
+                    ],
+                    "children": [
+                      {
+                        "nodeId": "7836",
+                        "type": "GROUP_LEVEL",
+                        "desc": "Sales Volume",
+                        "dynLabel": false,
+                        "valid": true,
+                        "status": "",
+                        "promptId": "Fact_QF",
+                        "showTotalsOnly": false,
+                        "baseUuid": "7836|GROUP_LEVEL|Fact_QF|e80e03681bf945a8ad2f88b0f547bfb7",
+                        "upcCount": 0,
+                        "thruIndex": 0,
+                        "pathInfo": [
+                          "Groups (folders)",
+                          "Fact Groups"
+                        ],
+                        "pathInfoIds": [
+                          "GRP",
+                          "Groups"
+                        ],
+                        "pathInfoTypes": [
+                          "VIEW",
+                          "GROUP"
+                        ],
+                        "children": [
+                          {
+                            "nodeId": "7848",
+                            "type": "GROUP_LEVEL",
+                            "desc": "Dollars",
+                            "dynLabel": false,
+                            "valid": true,
+                            "status": "",
+                            "promptId": "Fact_QF",
+                            "showTotalsOnly": false,
+                            "baseUuid": "7848|GROUP_LEVEL|Fact_QF|e80e03681bf945a8ad2f88b0f547bfb7",
+                            "upcCount": 0,
+                            "thruIndex": 0,
+                            "pathInfo": [
+                              "Groups (folders)",
+                              "Fact Groups",
+                              "Sales Volume"
+                            ],
+                            "pathInfoIds": [
+                              "GRP",
+                              "Groups",
+                              "7836"
+                            ],
+                            "pathInfoTypes": [
+                              "VIEW",
+                              "GROUP",
+                              "GROUP_LEVEL"
+                            ],
+                            "children": [
+                              {
+                                "nodeId": "DOL",
+                                "type": "GROUP_LEVEL_ITEM",
+                                "desc": "$",
+                                "leaf": true,
+                                "dynLabel": false,
+                                "valid": true,
+                                "status": "",
+                                "promptId": "Fact_QF",
+                                "showTotalsOnly": false,
+                                "baseUuid": "7848|GROUP_LEVEL|Fact_QF|e80e03681bf945a8ad2f88b0f547bfb7|DOL",
+                                "upcCount": 0,
+                                "thruIndex": 0,
+                                "pathInfo": [
+                                  "Groups (folders)",
+                                  "Fact Groups",
+                                  "Sales Volume",
+                                  "Dollars"
+                                ],
+                                "pathInfoIds": [
+                                  "GRP",
+                                  "Groups",
+                                  "7836",
+                                  "7848"
+                                ],
+                                "pathInfoTypes": [
+                                  "VIEW",
+                                  "GROUP",
+                                  "GROUP_LEVEL",
+                                  "GROUP_LEVEL"
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "promptId": "Periods_QF",
+        "basePromptId": "Periods_QF",
+        "promptName": "Periods",
+        "virtualDim": false,
+        "hiddenPrompt": false,
+        "logicalDimId": "PRD",
+        "minSelections": 1,
+        "maxSelections": 0,
+        "valid": true,
+        "dataScopeId": "19F5AE1EE45C4AA4979195910884C614",
+        "selections": [
+          {
+            "id": "654add733b404fc3a9b37375860ce6fa",
+            "active": true,
+            "items": [
+              {
+                "nodeId": "GRP",
+                "type": "VIEW",
+                "desc": "Groups (folders)",
+                "valid": true,
+                "status": "",
+                "promptId": "Periods_QF",
+                "baseUuid": "GRP|VIEW|Periods_QF|654add733b404fc3a9b37375860ce6fa",
+                "upcCount": 0,
+                "thruIndex": 0,
+                "pathInfo": [],
+                "pathInfoIds": [],
+                "pathInfoTypes": [],
+                "children": [
+                  {
+                    "nodeId": "Groups",
+                    "type": "GROUP",
+                    "desc": "Period Groups",
+                    "dynLabel": false,
+                    "valid": true,
+                    "status": "",
+                    "promptId": "Periods_QF",
+                    "showTotalsOnly": false,
+                    "baseUuid": "Groups|GROUP|Periods_QF|654add733b404fc3a9b37375860ce6fa",
+                    "upcCount": 0,
+                    "thruIndex": 0,
+                    "pathInfo": [
+                      "Groups (folders)"
+                    ],
+                    "pathInfoIds": [
+                      "GRP"
+                    ],
+                    "pathInfoTypes": [
+                      "VIEW"
+                    ],
+                    "children": [
+                      {
+                        "nodeId": "7939",
+                        "type": "GROUP_LEVEL",
+                        "desc": "Years",
+                        "dynLabel": false,
+                        "valid": true,
+                        "status": "",
+                        "promptId": "Periods_QF",
+                        "showTotalsOnly": false,
+                        "baseUuid": "7939|GROUP_LEVEL|Periods_QF|654add733b404fc3a9b37375860ce6fa",
+                        "upcCount": 0,
+                        "thruIndex": 0,
+                        "pathInfo": [
+                          "Groups (folders)",
+                          "Period Groups"
+                        ],
+                        "pathInfoIds": [
+                          "GRP",
+                          "Groups"
+                        ],
+                        "pathInfoTypes": [
+                          "VIEW",
+                          "GROUP"
+                        ],
+                        "children": [
+                          {
+                            "nodeId": "20361859",
+                            "type": "GROUP_LEVEL_ITEM",
+                            "desc": "Cal Yr 2013 W/E 12/28/13",
+                            "leaf": true,
+                            "dynLabel": false,
+                            "valid": true,
+                            "status": "",
+                            "promptId": "Periods_QF",
+                            "showTotalsOnly": false,
+                            "baseUuid": "7939|GROUP_LEVEL|Periods_QF|654add733b404fc3a9b37375860ce6fa|20361859",
+                            "upcCount": 0,
+                            "thruIndex": 0,
+                            "pathInfo": [
+                              "Groups (folders)",
+                              "Period Groups",
+                              "Years"
+                            ],
+                            "pathInfoIds": [
+                              "GRP",
+                              "Groups",
+                              "7939"
+                            ],
+                            "pathInfoTypes": [
+                              "VIEW",
+                              "GROUP",
+                              "GROUP_LEVEL"
+                            ]
+                          },
+                          {
+                            "nodeId": "20361858",
+                            "type": "GROUP_LEVEL_ITEM",
+                            "desc": "Cal Yr 2012 W/E 12/29/12",
+                            "leaf": true,
+                            "dynLabel": false,
+                            "valid": true,
+                            "status": "",
+                            "promptId": "Periods_QF",
+                            "showTotalsOnly": false,
+                            "baseUuid": "7939|GROUP_LEVEL|Periods_QF|654add733b404fc3a9b37375860ce6fa|20361858",
+                            "upcCount": 0,
+                            "thruIndex": 0,
+                            "pathInfo": [
+                              "Groups (folders)",
+                              "Period Groups",
+                              "Years"
+                            ],
+                            "pathInfoIds": [
+                              "GRP",
+                              "Groups",
+                              "7939"
+                            ],
+                            "pathInfoTypes": [
+                              "VIEW",
+                              "GROUP",
+                              "GROUP_LEVEL"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "objectType": "PERMANENT"
+  },
+  "userId": "govindarajan.raghunathapuram@nielsen.com",
+  "uid": "ae31d1b3fc4df88c9ecfb040b85072a0",
+  "locale": "en_US",
+  "userName": "govindarajan raghunathapuram",
+  "timezone": "CST6CDT",
+  "source": "AODOFFICEAPP"
+}
+
