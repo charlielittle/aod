@@ -61,53 +61,21 @@ async function insertMany( result, aod ) {
 		result.requestInstance.datascopeId = datascopeId.concat( "-", scopePad );
 		if( i % 1013 == 0 )
 			console.log(result.requestInstance.id, result.requestInstance.datascopeId);
-		// batch.push( JSON.parse( JSON.stringify(result) ) );
+		batch.push( JSON.parse( JSON.stringify(result) ) );
+		if( batch.length > 0 && batch.length % 1000 == 0 ) {
+			// insert batch async
+			console.log( `Batch length: ${batch.length}` );
+			count++;
+			const db = aod.insertMany( batch, { "ordered":false } ).then( (dbResult) => { 
+				console.log( dbResult) ;  
+				count--; 
+				// console.log( (result._id||"no _id" )); 
+			} );
+			batch = [];
+		}
+		while( count > 5 ) {
+			console.log( `waiting on tasks before adding another: count=${count}` );
+			await new Promise( r => setTimeout( r,  2 * 1000 ));
+		}
 	}
-	if( batch.length == 0 ) return;
-	// insert batch async
-	console.log( `Batch length: ${batch.length}` );
-	while( count > 5 ) {
-		console.log( `waiting on tasks before adding another: count=${count}` );
-		await new Promise( r => setTimeout( r,  2 * 1000 ));
-	}
-	count++;
-	const db = aod.insertMany( batch, { "ordered":false } ).then( (dbResult) => { 
-		console.log( dbResult) ;  
-		count--; 
-		console.log( (result._id||"no _id" )); 
-	} );
-	batch = [];
 }
-
-    // const result = await theaters.bulkWrite([
-    //   { insertOne:
-    //     {
-    //       "document": {
-    //         location: {
-    //           address: { street1: '3 Main St.', city: 'Anchorage', state: 'AK', zipcode: '99501' },
-    //         }
-    //       }
-    //     }
-    //   },
-    //   { insertOne:
-    //     {
-    //       "document": {
-    //         location: {
-    //           address: { street1: '75 Penn Plaza', city: 'New York', state: 'NY', zipcode: '10001' },
-    //         }
-    //       }
-    //     }
-    //   },
-    //   { updateMany:
-    //     {
-    //       "filter": { "location.address.zipcode" : "44011" },
-    //       "update": { $set : { "street2" : "25th Floor" } },
-    //       "upsert": true
-    //     }
-    //   },
-    //   { deleteOne :
-    //     { "filter" : { "location.address.street1" : "221b Baker St"} }
-    //   },
-    // ]);
-
-
