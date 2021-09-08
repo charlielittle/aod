@@ -11,6 +11,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "dotenv": "^10.0.0",
+    "minimist": "^1.2.5",
     "mongodb": "3.6",
     "readline-sync": "^1.4.10"
   }

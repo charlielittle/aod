@@ -5,6 +5,7 @@ const { strict } = require("assert");
 const { SSL_OP_EPHEMERAL_RSA } = require("constants");
 const { MongoClient } = require("mongodb");
 const { userInfo } = require("os");
+const { exit } = require("process");
 const { getSystemErrorMap } = require("util");
 const generate_index = require("../view_function");
 
@@ -12,6 +13,13 @@ const client = new MongoClient(url, { "useUnifiedTopology": true });
 var count = 0;
 
 async function run() {
+	const args = require('minimist')(process.argv.slice(2));
+	console.log( JSON.stringify( args ) );
+	let reverse = false;
+	if( args["reverse"]==true ) {
+		console.log( "Reverse flag found" );
+		reverse = true;
+	} else { console.log( "No reverse flag or reverse==false"); }
 	try {
 		await client.connect();
 
@@ -37,6 +45,7 @@ async function run() {
 		console.log(result);
 
 		var datascopes = await aod.distinct("requestInstance.datascopeId");
+		if( reverse ) datascopes.reverse();
 		console.log(datascopes);
 		var view = database.collection("view_desc");
 		await createViews(datascopes, aod, view);
