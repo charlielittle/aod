@@ -46,6 +46,7 @@ async function run() {
 
 		var datascopes = await aod.distinct("requestInstance.datascopeId");
 		if( reverse ) datascopes.reverse();
+		datascopes = datascopes.slice( 0, datascopes.length/2 );
 		console.log(datascopes);
 		var view = database.collection("view_desc");
 		await createViews(datascopes, aod, view);
@@ -75,13 +76,23 @@ async function createViews(datascopes, aod, view) {
 		// 	await new Promise(r => setTimeout(r, 2 * 1000));
 		// }
 		count++;
+		let queryTotal = 0;
+		let queryStart = process.hrtime();
 		const docs = await aod.find({ "requestInstance.datascopeId": scope }).toArray();
-		console.log( `instances for datascope ${scope}: ${docs.length}`);
+		let queryEnd = process.hrtime( queryStart );
+		console.log( `count for datascope ${scope}: ${docs.length}, query time: ${(queryEnd[1]/1000000).toFixed(2)}`);
+		let totalTime = 0;
 		for( let i = 0; i < docs.length; i++ ) { //.forEach( async function(doc) {
 			const doc = docs[ i ];
+			start = process.hrtime();
 			const itemCount = await generate_index(doc, view);
+			let hrend = process.hrtime( start );
+			totalTime += hrend[1];
 			count--;
-			console.log( `items added ${itemCount}` );
+			// console.log( `${(hrend[1]/1000000).toFixed(2)} items added ${itemCount}` );
+			if( (i+1) % 1000 == 0 ) {
+				console.log( `count: ${i+1}, average time per instance: ${(totalTime/1000000/(i+1)).toFixed(2)}`);
+			}
 		}// );
 			// count--;
 	} //);

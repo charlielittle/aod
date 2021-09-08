@@ -61,11 +61,11 @@ const generate_index = async function (doc, view) {
 			}
 			if( batch.length > 0 ) {
 				let res = await view.insertMany( batch, { ordered: false, writeConcern: {w:1} });
-				console.log( `insertMany: ${res}` );
+				// console.log( `insertMany: ${res}` );
 			} else {
 				console.log( `Empty batch` );
 			}
-			console.log( `${items} inserted for id: ${id} datascope: ${dataScope} objectType: ${objectType}` );
+			// console.log( `${items} inserted for id: ${id} datascope: ${dataScope} objectType: ${objectType}` );
 		}
 	}
 	return items; // return count of inserted index entries
