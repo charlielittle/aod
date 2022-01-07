@@ -61,7 +61,7 @@ const generate_index = async function (doc, view) {
 			}
 			if( batch.length > 0 ) {
 				let res = await view.insertMany( batch, { ordered: false, writeConcern: {w:1} });
-				// console.log( `insertMany: ${res}` );
+				// console.log( `insertMany: ${JSON.stringify( res.result )}` );
 			} else {
 				console.log( `Empty batch` );
 			}

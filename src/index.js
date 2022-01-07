@@ -1,5 +1,3 @@
-// const url = "mongodb+srv://aod:aod@cluster0.qukk7.mongodb.net/myFirstDatabase?retryWrites=false&w=1";
-const url = "mongodb+srv://aod:aod@aod-views.qukk7.mongodb.net/aod?retryWrites=true&w=majority";
 
 const { strict } = require("assert");
 const { SSL_OP_EPHEMERAL_RSA } = require("constants");
@@ -7,19 +5,24 @@ const { MongoClient } = require("mongodb");
 const { userInfo } = require("os");
 const { exit } = require("process");
 const { getSystemErrorMap } = require("util");
-const generate_index = require("../view_function");
+const generate_index = require("./view_function");
 
-const client = new MongoClient(url, { "useUnifiedTopology": true });
 var count = 0;
 
 async function run() {
-	const args = require('minimist')(process.argv.slice(2));
+	const args = require('minimist')(process.argv.slice(1));
 	console.log( JSON.stringify( args ) );
 	let reverse = false;
 	if( args["reverse"]==true ) {
 		console.log( "Reverse flag found" );
 		reverse = true;
 	} else { console.log( "No reverse flag or reverse==false"); }
+    if( args["url"] ) {
+        console.log("using url argument");
+        url = args["url"];
+    } else { console.error( `No Atlas url specified.  Pass as a parameter [ --url="mongodb+srv://example.com" ]`); }
+    console.log( `url=${url}` );
+    const client = new MongoClient(url, { "useUnifiedTopology": true });
 	try {
 		await client.connect();
 
@@ -28,6 +31,7 @@ async function run() {
 
 		var result = await aod.findOne();
 		if (!result) {
+            console.log( "No sample data in MongoDB collection.  Loading from sample file...");
 			const fs = require('fs');
 			const path = require('path');
 
@@ -38,21 +42,33 @@ async function run() {
 			if (result) result = await aod.findOne();
 		}
 		delete result._id;
-		const viewFun = require('../view_function');
+		const viewFun = require('./view_function');
 		if (!result["requestInstance"]) {
+            console.log( "Wrapping sample doc in 'requestInstance' root field.");
 			result = { "requestInstance": result };
 		}
 		console.log(result);
+        if( args["insert"]==true ) {
+            console.log( "Inserting many sample docs (up to 1m)" );
+            await database.dropDatabase();
+            await database.collection("aod").createIndex( { "datascope":1 } );
+            await insertMany( result, aod );
+        }
 
 		var datascopes = await aod.distinct("requestInstance.datascopeId");
+        console.log( `Distinct datascope count: ${datascopes.length}` );
 		if( reverse ) datascopes.reverse();
-		datascopes = datascopes.slice( 0, datascopes.length/2 );
+		// datascopes = datascopes.slice( 0, Math.ceil( datascopes.length/2 ) );  // process half
 		console.log(datascopes);
-		var view = database.collection("view_desc");
-		await createViews(datascopes, aod, view);
+        if( database.collection("view_desc") ) {
+            await database.dropCollection("view_desc", () => { console.log("dropped 'view_desc' collection." ); }); // start with empty index view
+        }
+		await database.createCollection("view_desc", null, () => { console.log("create new 'view_desc' collection." ); } );
+        var view = database.collection("view_desc");
+        
+        await createViews(datascopes, aod, view);
 		console.log("createViews returned.");
-		// console.log(result);
-		// insertMany( result, aod );
+		console.log(result);
 	} catch( err ) {
 		console.error("Caught exception: " + err );
 	} finally {
@@ -90,8 +106,8 @@ async function createViews(datascopes, aod, view) {
 			totalTime += hrend[1];
 			count--;
 			// console.log( `${(hrend[1]/1000000).toFixed(2)} items added ${itemCount}` );
-			if( (i+1) % 1000 == 0 ) {
-				console.log( `count: ${i+1}, average time per instance: ${(totalTime/1000000/(i+1)).toFixed(2)}`);
+			if( (i+1) % 100 == 0 ) {
+				console.log( `datascope: ${scope}, count: ${i+1}, average time per requestInstance to create view (ms): ${(totalTime/1000000/(i+1)).toFixed(3)}`);
 			}
 		}// );
 			// count--;
@@ -118,7 +134,7 @@ async function insertMany(result, aod) {
 			console.log(`Batch length: ${batch.length}`);
 			count++;
 			const db = aod.insertMany(batch, { "ordered": false }).then((dbResult) => {
-				console.log(dbResult);
+				console.log(dbResult.insertedCount);
 				count--;
 				// console.log( (result._id||"no _id" )); 
 			});

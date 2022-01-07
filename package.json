@@ -13,6 +13,8 @@
     "dotenv": "^10.0.0",
     "minimist": "^1.2.5",
     "mongodb": "3.6",
-    "readline-sync": "^1.4.10"
+    "readline-sync": "^1.4.10",
+    "snappy": "^7.1.1",
+    "zlib": "^1.0.5"
   }
 }
