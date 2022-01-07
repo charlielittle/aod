@@ -1,5 +1,3 @@
-// const url = "mongodb+srv://aod:aod@cluster0.qukk7.mongodb.net/myFirstDatabase?retryWrites=false&w=1";
-const url = "mongodb+srv://aod:aod@aod-views.qukk7.mongodb.net/aod?retryWrites=true&w=majority";
 
 const { strict } = require("assert");
 const { SSL_OP_EPHEMERAL_RSA } = require("constants");
@@ -9,6 +7,13 @@ const { exit } = require("process");
 const { getSystemErrorMap } = require("util");
 const generate_index = require("./view_function");
 
+const args = require('minimist')(process.argv.slice(1));
+console.log( JSON.stringify( args ) );
+if( args["url"] ) {
+    console.log("using url argument");
+    url = args["url"];
+} else { console.error( `No Atlas url specified.  Pass as a parameter [ --url="mongodb+srv://example.com" ]`); }
+console.log( `url=${url}` );
 
 const client = new MongoClient(url, { "useUnifiedTopology": true });
 var count = 0;
